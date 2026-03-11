@@ -7,8 +7,11 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-mongoose.connect("mongodb+srv://khushijain11april_db_user:khushi123@cluster0.yn1lo5l.mongodb.net/houserent")
+require("dotenv").config()
+
+mongoose.connect(process.env.MONGO_URL)
 .then(()=>console.log("DB Connected"))
+.catch(err=>console.log(err)).then(()=>console.log("DB Connected"))
 .catch(err=>console.log(err))
 .then(()=>console.log("DB Connected"))
 
